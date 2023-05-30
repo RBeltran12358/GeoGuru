@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GeoGuru</string>
+    <string name="explore_our_quizzes">Welcome to GeoGuru. Find the right quiz for you!</string>
+    <string name="quiz_one">Quiz 1</string>
+    <string name="quiz_two">Quiz 2</string>
+    <string name="quiz_three">Quiz 3</string>
+    <string name="quiz_four">Quiz 3</string>
+    <string name="quiz_preview">Quiz Preview</string>
+    <string name="preview_title_setup">Preview for Quiz </string>
+    <string name="preview_quiz_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="sacramento">Sacramento</string>
+    <string name="los_angeles">Los Angeles</string>
+    <string name="monterey">Monterey</string>
+    <string name="salinas">Salinas</string>
+    <string name="sample_question">What is the current capital of California?</string>
+    <string name="num_of_questions">Total Number of Questions</string>
+    <string name="num_of_questions_correct">Questions Answered Correctly</string>
+    <string name="summary_quiz_title">Quiz Title</string>
+    <string name="summary_thank_you">Congratulations! You Finished The Quiz!! </string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="quiz_questions">Quiz Questions</string>
+    <string name="quiz_summary">Quiz Summary</string>
+    <string name="back_button">Back</string>
+</resources>
