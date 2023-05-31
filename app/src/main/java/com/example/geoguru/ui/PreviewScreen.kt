@@ -1,4 +1,3 @@
-
 package com.example.geoguru.ui
 
 import androidx.compose.foundation.layout.Arrangement

@@ -32,7 +32,7 @@ class QuizViewModel : ViewModel() {
         }
     }
 
-    fun resetOrder() {
+    fun resetQuiz() {
         _uiState.value = QuizUiState(quizExampleOptions = quizQuestionOptions())
     }
 

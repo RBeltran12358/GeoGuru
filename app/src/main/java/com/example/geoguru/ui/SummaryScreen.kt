@@ -1,5 +1,5 @@
 
-package com.example.cupcake.ui
+package com.example.geoguru.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import com.example.cupcake.R
-import com.example.cupcake.data.QuizUiState
+import com.example.geoguru.R
+import com.example.geoguru.data.QuizUiState
 
 @Composable
 fun QuizSummaryScreen(

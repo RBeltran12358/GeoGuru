@@ -19,11 +19,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.cupcake.R
+import com.example.geoguru.R
 
 
 @Composable
-fun StartOrderScreen(
+fun StartQuizScreen(
     quizOptions: List<Pair<Int, Int>>,
     onNextButtonClicked: (Int) -> Unit,
     modifier: Modifier = Modifier
@@ -53,7 +53,7 @@ fun StartOrderScreen(
                 )
             ) {
                 quizOptions.forEach { item ->
-                    SelectQuantityButton(
+                    SelectQuizButton(
                         labelResourceId = item.first,
                         onClick = { onNextButtonClicked(item.second) }
                     )
@@ -65,7 +65,7 @@ fun StartOrderScreen(
 }
 
 @Composable
-fun SelectQuantityButton(
+fun SelectQuizButton(
     @StringRes labelResourceId: Int,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
