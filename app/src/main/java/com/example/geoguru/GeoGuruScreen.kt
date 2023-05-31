@@ -1,19 +1,4 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package com.example.cupcake
+package com.example.geoguru
 
 import android.content.Context
 import android.content.Intent
@@ -43,29 +28,25 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.cupcake.data.DataSource
-import com.example.cupcake.data.OrderUiState
-import com.example.cupcake.ui.OrderSummaryScreen
-import com.example.cupcake.ui.OrderViewModel
-import com.example.cupcake.ui.SelectOptionScreen
-import com.example.cupcake.ui.StartOrderScreen
+import com.example.cupcake.R
+import com.example.geoguru.data.DataSource
+import com.example.geoguru.data.DataSource.cities
+import com.example.geoguru.ui.QuizSummaryScreen
+import com.example.geoguru.ui.QuizViewModel
+import com.example.geoguru.ui.SelectOptionScreen
+import com.example.geoguru.ui.StartOrderScreen
+import com.example.geoguru.ui.PreviewScreen
 
-/**
- * enum values that represent the screens in the app
- */
-enum class CupcakeScreen(@StringRes val title: Int) {
+enum class GeoGuruScreen(@StringRes val title: Int) {
     Start(title = R.string.app_name),
-    Flavor(title = R.string.choose_flavor),
-    Pickup(title = R.string.choose_pickup_date),
-    Summary(title = R.string.order_summary)
+    Preview(title = R.string.quiz_preview),
+    Questions(title = R.string.quiz_questions),
+    Summary(title = R.string.quiz_summary)
 }
 
-/**
- * Composable that displays the topBar and displays back button if back navigation is possible.
- */
 @Composable
-fun CupcakeAppBar(
-    currentScreen: CupcakeScreen,
+fun GeoGuruAppBar(
+    currentScreen: GeoGuruScreen,
     canNavigateBack: Boolean,
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
@@ -90,20 +71,20 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp(
-    viewModel: OrderViewModel = viewModel(),
+fun GeoGuruApp(
+    viewModel: QuizViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
     // Get current back stack entry
     val backStackEntry by navController.currentBackStackEntryAsState()
     // Get the name of the current screen
-    val currentScreen = CupcakeScreen.valueOf(
-        backStackEntry?.destination?.route ?: CupcakeScreen.Start.name
+    val currentScreen = GeoGuruScreen.valueOf(
+        backStackEntry?.destination?.route ?: GeoGuruScreen.Start.name
     )
 
     Scaffold(
         topBar = {
-            CupcakeAppBar(
+            GeoGuruAppBar(
                 currentScreen = currentScreen,
                 canNavigateBack = navController.previousBackStackEntry != null,
                 navigateUp = { navController.navigateUp() }
@@ -114,55 +95,49 @@ fun CupcakeApp(
 
         NavHost(
             navController = navController,
-            startDestination = CupcakeScreen.Start.name,
+            startDestination = GeoGuruScreen.Start.name,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(route = CupcakeScreen.Start.name) {
+            composable(route = GeoGuruScreen.Start.name) {
                 StartOrderScreen(
-                    quantityOptions = DataSource.quantityOptions,
+                    quizOptions = DataSource.quizOptions,
                     onNextButtonClicked = {
-                        viewModel.setQuantity(it)
-                        navController.navigate(CupcakeScreen.Flavor.name)
+                        viewModel.setQuiz(it)
+                        navController.navigate(GeoGuruScreen.Preview.name)
                     },
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(dimensionResource(R.dimen.padding_medium))
                 )
             }
-            composable(route = CupcakeScreen.Flavor.name) {
-                val context = LocalContext.current
-                SelectOptionScreen(
-                    subtotal = uiState.price,
-                    onNextButtonClicked = { navController.navigate(CupcakeScreen.Pickup.name) },
+            composable(route = GeoGuruScreen.Preview.name) {
+                PreviewScreen(
+                    quizUiState = uiState,
+                    onNextButtonClicked = { navController.navigate(GeoGuruScreen.Questions.name) },
                     onCancelButtonClicked = {
                         cancelOrderAndNavigateToStart(viewModel, navController)
                     },
-                    options = DataSource.flavors.map { id -> context.resources.getString(id) },
-                    onSelectionChanged = { viewModel.setFlavor(it) },
                     modifier = Modifier.fillMaxHeight()
                 )
             }
-            composable(route = CupcakeScreen.Pickup.name) {
+            composable(route = GeoGuruScreen.Questions.name) {
+                val context = LocalContext.current
                 SelectOptionScreen(
-                    subtotal = uiState.price,
-                    onNextButtonClicked = { navController.navigate(CupcakeScreen.Summary.name) },
+                    onNextButtonClicked = { navController.navigate(GeoGuruScreen.Summary.name) },
                     onCancelButtonClicked = {
                         cancelOrderAndNavigateToStart(viewModel, navController)
                     },
-                    options = uiState.pickupOptions,
-                    onSelectionChanged = { viewModel.setDate(it) },
+                    options = cities.map { id -> context.resources.getString(id) },
+                    onSelectionChanged = { viewModel.setQuizScore(it) },
                     modifier = Modifier.fillMaxHeight()
                 )
             }
-            composable(route = CupcakeScreen.Summary.name) {
+            composable(route = GeoGuruScreen.Summary.name) {
                 val context = LocalContext.current
-                OrderSummaryScreen(
-                    orderUiState = uiState,
+                QuizSummaryScreen(
+                    quizUiState = uiState,
                     onCancelButtonClicked = {
                         cancelOrderAndNavigateToStart(viewModel, navController)
-                    },
-                    onSendButtonClicked = { subject: String, summary: String ->
-                        shareOrder(context, subject = subject, summary = summary)
                     },
                     modifier = Modifier.fillMaxHeight()
                 )
@@ -171,20 +146,14 @@ fun CupcakeApp(
     }
 }
 
-/**
- * Resets the [OrderUiState] and pops up to [CupcakeScreen.Start]
- */
 private fun cancelOrderAndNavigateToStart(
-    viewModel: OrderViewModel,
+    viewModel: QuizViewModel,
     navController: NavHostController
 ) {
     viewModel.resetOrder()
-    navController.popBackStack(CupcakeScreen.Start.name, inclusive = false)
+    navController.popBackStack(GeoGuruScreen.Start.name, inclusive = false)
 }
 
-/**
- * Creates an intent to share order details
- */
 private fun shareOrder(context: Context, subject: String, summary: String) {
     // Create an ACTION_SEND implicit intent with order details in the intent extras
     val intent = Intent(Intent.ACTION_SEND).apply {

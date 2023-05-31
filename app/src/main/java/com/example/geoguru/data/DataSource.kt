@@ -13,22 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cupcake
+package com.example.geoguru.data
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.core.view.WindowCompat
-import com.example.cupcake.ui.theme.CupcakeTheme
+import com.example.cupcake.R
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        setContent {
-            CupcakeTheme {
-                CupcakeApp()
-            }
-        }
-    }
+object DataSource {
+    val flavors = listOf(
+        R.string.vanilla,
+        R.string.chocolate,
+        R.string.red_velvet,
+        R.string.salted_caramel,
+        R.string.coffee
+    )
+
+    val cities = listOf(
+        R.string.sacramento,
+        R.string.los_angeles,
+        R.string.monterey,
+        R.string.salinas,
+    )
+
+    val quizOptions = listOf(
+        Pair(R.string.quiz_one, 1),
+        Pair(R.string.quiz_two, 2),
+        Pair(R.string.quiz_three, 3)
+    )
 }

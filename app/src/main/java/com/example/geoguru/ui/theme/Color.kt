@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cupcake.ui.theme
+package com.example.geoguru.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -47,9 +47,9 @@ val md_theme_light_surfaceTint = Color(0xFF984062)
 val md_theme_light_outlineVariant = Color(0xFFD5C2C6)
 val md_theme_light_scrim = Color(0xFF000000)
 
-val md_theme_dark_primary = Color(0xFFFFB0C9)
-val md_theme_dark_onPrimary = Color(0xFF5E1133)
-val md_theme_dark_primaryContainer = Color(0xFF7B294A)
+val md_theme_dark_primary = Color(0xFF95F6D3)
+val md_theme_dark_onPrimary = Color(0xFF127445)
+val md_theme_dark_primaryContainer = Color(0xFF127445)
 val md_theme_dark_onPrimaryContainer = Color(0xFFFFD9E2)
 val md_theme_dark_secondary = Color(0xFFE2BDC7)
 val md_theme_dark_onSecondary = Color(0xFF422931)
@@ -65,7 +65,7 @@ val md_theme_dark_onError = Color(0xFF690005)
 val md_theme_dark_onErrorContainer = Color(0xFFFFDAD6)
 val md_theme_dark_background = Color(0xFF201A1B)
 val md_theme_dark_onBackground = Color(0xFFEBE0E1)
-val md_theme_dark_surface = Color(0xFF201A1B)
+val md_theme_dark_surface = Color(0xFF95F6D3)
 val md_theme_dark_onSurface = Color(0xFFEBE0E1)
 val md_theme_dark_surfaceVariant = Color(0xFF514347)
 val md_theme_dark_onSurfaceVariant = Color(0xFFD5C2C6)

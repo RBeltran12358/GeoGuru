@@ -13,20 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cupcake.ui
+package com.example.geoguru.ui
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
-import androidx.compose.material3.Button
-import androidx.compose.material3.Divider
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,30 +29,33 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.R
-import com.example.cupcake.ui.components.FormattedPriceLabel
+import com.example.geoguru.ui.components.FormattedPriceLabel
 
-/**
- * Composable that displays the list of items as [RadioButton] options,
- * [onSelectionChanged] lambda that notifies the parent composable when a new value is selected,
- * [onCancelButtonClicked] lambda that cancels the order when user clicks cancel and
- * [onNextButtonClicked] lambda that triggers the navigation to next screen
- */
 @Composable
 fun SelectOptionScreen(
-    subtotal: String,
     options: List<String>,
     onSelectionChanged: (String) -> Unit = {},
     onCancelButtonClicked: () -> Unit = {},
     onNextButtonClicked: () -> Unit = {},
     modifier: Modifier = Modifier
-){
+) {
     var selectedValue by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))){
+        Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))) {
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+            Text(
+                text = stringResource(R.string.sample_question),
+                style = MaterialTheme.typography.headlineLarge
+            )
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+            Divider(
+                thickness = dimensionResource(R.dimen.thickness_divider),
+                modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
+            )
             options.forEach { item ->
                 Row(
                     modifier = Modifier.selectable(
@@ -72,7 +66,7 @@ fun SelectOptionScreen(
                         }
                     ),
                     verticalAlignment = Alignment.CenterVertically
-                ){
+                ) {
                     RadioButton(
                         selected = selectedValue == item,
                         onClick = {
@@ -83,18 +77,10 @@ fun SelectOptionScreen(
                     Text(item)
                 }
             }
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
             Divider(
                 thickness = dimensionResource(R.dimen.thickness_divider),
                 modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
-            )
-            FormattedPriceLabel(
-                subtotal = subtotal,
-                modifier = Modifier
-                    .align(Alignment.End)
-                    .padding(
-                        top = dimensionResource(R.dimen.padding_medium),
-                        bottom = dimensionResource(R.dimen.padding_medium)
-                    )
             )
         }
         Row(
@@ -104,7 +90,7 @@ fun SelectOptionScreen(
                 .weight(1f, false),
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
             verticalAlignment = Alignment.Bottom
-        ){
+        ) {
             OutlinedButton(modifier = Modifier.weight(1f), onClick = onCancelButtonClicked) {
                 Text(stringResource(R.string.cancel))
             }
@@ -119,14 +105,4 @@ fun SelectOptionScreen(
         }
     }
 
-}
-
-@Preview
-@Composable
-fun SelectOptionPreview(){
-    SelectOptionScreen(
-        subtotal = "299.99",
-        options = listOf("Option 1", "Option 2", "Option 3", "Option 4"),
-        modifier = Modifier.fillMaxHeight()
-    )
 }

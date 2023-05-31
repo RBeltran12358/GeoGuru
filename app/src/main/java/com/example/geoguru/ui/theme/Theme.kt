@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.cupcake.ui.theme
+package com.example.geoguru.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -95,7 +95,7 @@ private val DarkColors = darkColorScheme(
 )
 
 @Composable
-fun CupcakeTheme(
+fun GeoGuruTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+ but turned off for training purposes
     dynamicColor: Boolean = false,
@@ -107,8 +107,8 @@ fun CupcakeTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColors
-        else -> LightColors
+        darkTheme -> LightColors
+        else -> DarkColors
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
