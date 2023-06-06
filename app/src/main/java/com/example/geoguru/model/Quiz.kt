@@ -10,5 +10,9 @@ data class Quiz(
         return quizQuestions.size
     }
 
+    fun getQuizTitle(): String {
+        return preview.title
+    }
+
 
 }

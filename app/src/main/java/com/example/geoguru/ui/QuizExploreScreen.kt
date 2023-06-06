@@ -1,15 +1,12 @@
 package com.example.geoguru.ui
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,11 +17,12 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.geoguru.R
+import com.example.geoguru.model.Quiz
 
 
 @Composable
 fun StartQuizScreen(
-    quizOptions: List<Pair<Int, Int>>,
+    quizOptions: List<Quiz>,
     onNextButtonClicked: (Int) -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -45,38 +43,44 @@ fun StartQuizScreen(
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
         }
         Row(modifier = Modifier.weight(1f, false)) {
-            Column(
+            LazyColumn(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(
-                    dimensionResource(id = R.dimen.padding_medium)
-                )
-            ) {
-                quizOptions.forEach { item ->
+                    dimensionResource(id = R.dimen.padding_medium))) {
+                items(quizOptions) { quiz ->
                     SelectQuizButton(
-                        labelResourceId = item.first,
-                        onClick = { onNextButtonClicked(item.second) }
+                        quizTitle = quiz.getQuizTitle(),
+                        numOfQuestions = quiz.getNumberOfQuestions().toString(),
+                        onClick = { onNextButtonClicked(quiz.quizId) }
                     )
-                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
                 }
             }
+
         }
     }
 }
 
 @Composable
 fun SelectQuizButton(
-    @StringRes labelResourceId: Int,
+    quizTitle: String,
+    numOfQuestions: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
     Button(
         onClick = onClick,
         modifier = modifier
-            .widthIn(min = 300.dp)
-            .height(120.dp)
-            .clip(shape = RoundedCornerShape(0.dp))
+            .widthIn(min = 350.dp)
+            .height(150.dp)
+            .clip(shape = RoundedCornerShape(100.dp))
     ) {
-        Text(stringResource(labelResourceId))
+        Column(modifier = Modifier.weight(1f, false)) {
+            Text(text = quizTitle, style = MaterialTheme.typography.headlineMedium)
+            Text(
+                text = "Num of Questions: $numOfQuestions",
+                style = MaterialTheme.typography.headlineSmall
+            )
+        }
     }
 }

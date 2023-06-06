@@ -82,7 +82,6 @@ private val DarkColors = darkColorScheme(
 @Composable
 fun GeoGuruTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+ but turned off for training purposes
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
