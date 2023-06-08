@@ -1,8 +1,10 @@
 package com.example.geoguru.model
 
+import androidx.annotation.DrawableRes
+
 data class QuizQuestion(
     val quizQuestion: String,
-    val image: String,
+    @DrawableRes val image: Int?,
     val correctAnswer: String,
     val quizOptions: List<String>
 ){

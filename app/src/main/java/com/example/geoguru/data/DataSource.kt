@@ -17,113 +17,119 @@ object DataSource {
         Quiz(
             quizId = 1,
             preview = QuizPreview(
-                title = "Quiz 1",
+                title = "US States by Outline",
                 image = R.drawable.americanflag,
-                description = "Quiz 1 Description"
+                description = "See if you can identify US states by their shape!"
             ),
             quizQuestions = listOf(
                 QuizQuestion(
-                    quizQuestion = "What is 1",
-                    image = "",
-                    correctAnswer = "1",
-                    quizOptions = quizOptions
-                ),
+                    quizQuestion = "Which state is this?",
+                    image = R.drawable.virginiaoutline,
+                    correctAnswer = "Virginia",
+                    quizOptions = listOf("North Carolina", "Virginia", "South Carolina", "Kentucky")),
                 QuizQuestion(
-                    quizQuestion = "What is 2",
-                    image = "",
-                    correctAnswer = "2",
-                    quizOptions),
+                    quizQuestion = "Which state is this?",
+                    image = R.drawable.alabamaoutline,
+                    correctAnswer = "Alabama",
+                    quizOptions = listOf("Alabama", "Mississippi", "Arkansas", "New Hampshire")),
                 QuizQuestion(
-                    quizQuestion = "What is 3",
-                    image = "",
-                    correctAnswer = "3",
-                    quizOptions),
+                    quizQuestion = "Which state is this?",
+                    image = R.drawable.illinoisoutline,
+                    correctAnswer = "Illinois",
+                    quizOptions = listOf("Iowa", "Indiana", "Illinois", "Delaware")),
                 QuizQuestion(
-                    quizQuestion = "What is 4",
-                    image = "",
-                    correctAnswer = "4",
-                    quizOptions)
+                    quizQuestion = "Which state is this?",
+                    image = R.drawable.coloradooutline,
+                    correctAnswer = "Colorado",
+                    quizOptions = listOf("North Dakota", "South Dakota", "Colorado", "NULL")),
             )
         ),
         Quiz(
             quizId = 2,
             preview = QuizPreview(
                 title = "European Capital Cities",
-                image = R.drawable.americanflag,
+                image = R.drawable.europeoutline,
                 description = "Test your knowledge on less popular European capital cities"
             ),
             quizQuestions = listOf(
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Belgium?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Brussels",
                     quizOptions = listOf("Amsterdam", "Bruges", "Brussels", "Rotterdam")
                 ),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Bosnia and Herzegovina?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Sarajevo",
                     quizOptions = listOf("Sarajevo", "Zagreb", "Tuzia", "Ljubljana")),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Bulgaria?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Sofia",
                     quizOptions = listOf("Bucharest", "Sofia", "Belgrade", "Varna")),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Czech Republic?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Prague",
                     quizOptions = listOf("Prague", "Brno", "Vienna", "Bratislava")),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Denmark?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Copenhagen",
                     quizOptions = listOf("Amsterdam", "Vienna", "Gothenburg", "Copenhagen")),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Estonia?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Tallinn",
                     quizOptions = listOf("Vilnius", "Tallinn", "Riga", "Tartu")),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Finland?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Helsinki",
                     quizOptions = listOf("Turku", "Minsk", "Stockholm", "Helsinki")),
                 QuizQuestion(
-                    quizQuestion = "What is the capital city of Greenland?",
-                    image = "",
-                    correctAnswer = "Nuuk",
-                    quizOptions = listOf("Nuuk", "Reykjavik", "Oslo", "Akranes")),
+                    quizQuestion = "What is the capital city of Poland?",
+                    image = null,
+                    correctAnswer = "Warsaw",
+                    quizOptions = listOf("Warsaw", "Krakow", "Lodz", "Minsk")),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Iceland?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Reykjavik",
                     quizOptions = listOf("Dublin", "Akranes", "Reykjavik", "Fjardarbyggd")),
                 QuizQuestion(
                     quizQuestion = "What is the capital city of Croatia?",
-                    image = "",
+                    image = null,
                     correctAnswer = "Zagreb",
                     quizOptions = listOf("Split", "Zagreb", "Budapest", "Rijeka")),
             )
         ),
-//        Quiz(
-//            quizId = 3,
-//            preview = QuizPreview(
-//                title = "Quiz 3",
-//                image = R.drawable.americanflag,
-//                description = "Quiz 3 Description"
-//            ),
-//            quizQuestions = listOf(
-//                QuizQuestion(
-//                    quizQuestion = "What is 30",
-//                    image = "",
-//                    correctAnswer = "30"),
-//                QuizQuestion(
-//                    quizQuestion = "What is 9",
-//                    image = "",
-//                    correctAnswer = "9"),
-//            )
-//        ),
+        Quiz(
+            quizId = 3,
+            preview = QuizPreview(
+                title = "African Countries by Outline",
+                image = R.drawable.africaoutline,
+                description = "Test your knowledge of African country shapes by their outline!"
+            ),
+            quizQuestions = listOf(
+                QuizQuestion(
+                    quizQuestion = "Which country is this?",
+                    image = R.drawable.cameroonoutline,
+                    correctAnswer = "Cameroon",
+                    quizOptions = listOf("Republic of Congo", "Cameroon", "Eritrea", "Sierra Leone")),
+                QuizQuestion(
+                    quizQuestion = "Which country is this?",
+                    image = R.drawable.ethiopiaoutline,
+                    correctAnswer = "Alabama",
+                    quizOptions = listOf("Eritrea", "Zimbabwe", "Botswana", "Ethiopia")),
+                QuizQuestion(
+                    quizQuestion = "Which country is this?",
+                    image = R.drawable.malioutline,
+                    correctAnswer = "Mali",
+                    quizOptions = listOf("Mauritania", "Angola", "Mali", "Libya")),
+            )
+        ),
 //        Quiz(
 //            quizId = 4,
 //            preview = QuizPreview(
