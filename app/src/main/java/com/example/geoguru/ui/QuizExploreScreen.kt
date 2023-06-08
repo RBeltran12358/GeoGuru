@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.geoguru.R
 import com.example.geoguru.model.Quiz
@@ -38,6 +39,7 @@ fun StartQuizScreen(
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
             Text(
                 text = stringResource(R.string.explore_our_quizzes),
+                textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.headlineLarge
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
@@ -73,7 +75,7 @@ fun SelectQuizButton(
         modifier = modifier
             .widthIn(min = 350.dp)
             .height(150.dp)
-            .clip(shape = RoundedCornerShape(100.dp))
+            .clip(shape = RoundedCornerShape(10.dp))
     ) {
         Column(modifier = Modifier.weight(1f, false)) {
             Text(text = quizTitle, style = MaterialTheme.typography.headlineMedium)

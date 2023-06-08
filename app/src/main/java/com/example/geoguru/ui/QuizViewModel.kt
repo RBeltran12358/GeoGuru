@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import java.time.temporal.ValueRange
 
 class QuizViewModel : ViewModel() {
 
@@ -34,13 +35,18 @@ class QuizViewModel : ViewModel() {
     fun setQuizScore(userResponse: String) {
         _uiState.update { currState ->
             val updatedScores = currState.scores
+            val wrongIndices = currState.incorrectQuestionsIndices
+
             if (currState.currQuiz?.quizQuestions?.get(currState.currQuestionIndex)?.validateAnswer(userResponse) == true){
                 updatedScores[currState.currQuestionIndex] = 1
+                wrongIndices.remove(currState.currQuestionIndex)
             } else {
                 updatedScores[currState.currQuestionIndex] = 0
+                wrongIndices.add(currState.currQuestionIndex)
             }
             currState.copy(
-                scores = updatedScores
+                scores = updatedScores,
+                incorrectQuestionsIndices = wrongIndices
             )
         }
     }

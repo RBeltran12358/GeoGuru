@@ -52,6 +52,14 @@ fun QuizSummaryScreen(
                 Divider(thickness = dimensionResource(R.dimen.thickness_divider))
             }
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+
+            quizUiState.incorrectQuestionsIndices.forEach { item ->
+                quizUiState.currQuiz?.quizQuestions?.get(item)?.let {
+                    Text(
+                        text = it.quizQuestion)
+                }
+                Divider(thickness = dimensionResource(R.dimen.thickness_divider))
+            }
         }
         Row(
             modifier = Modifier
