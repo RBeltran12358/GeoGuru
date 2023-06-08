@@ -24,9 +24,9 @@ fun QuizSummaryScreen(
     modifier: Modifier = Modifier
 ){
     val items = listOf(
-        Pair(stringResource(R.string.summary_quiz_title), "Quiz "+quizUiState.quiz_id),
+        Pair(stringResource(R.string.summary_quiz_title), "Quiz "+quizUiState.currQuizId),
         Pair(stringResource(R.string.num_of_questions), "1"),
-        Pair(stringResource(R.string.num_of_questions_correct), ""+quizUiState.score)
+        Pair(stringResource(R.string.num_of_questions_correct), "" + quizUiState.scores.sum())
     )
 
     Column(

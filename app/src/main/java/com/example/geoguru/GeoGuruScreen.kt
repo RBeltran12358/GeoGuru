@@ -26,7 +26,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.geoguru.R
 import com.example.geoguru.data.DataSource
 import com.example.geoguru.data.DataSource.cities
 import com.example.geoguru.ui.QuizSummaryScreen
@@ -98,7 +97,7 @@ fun GeoGuruApp(
         ) {
             composable(route = GeoGuruScreen.Start.name) {
                 StartQuizScreen(
-                    quizOptions = DataSource.quizOptions,
+                    quizOptions = DataSource.quizList,
                     onNextButtonClicked = {
                         viewModel.setQuiz(it)
                         navController.navigate(GeoGuruScreen.Preview.name)
@@ -120,8 +119,17 @@ fun GeoGuruApp(
             }
             composable(route = GeoGuruScreen.Questions.name) {
                 val context = LocalContext.current
+//                uiState.currQuiz?.quizQuestions[uiState.currQuizIndex] =
                 SelectOptionScreen(
-                    onNextButtonClicked = { navController.navigate(GeoGuruScreen.Summary.name) },
+                    quizUiState = uiState,
+                    onNextButtonClicked = {
+                        if (uiState.currQuestionIndex + 1 == (uiState.currQuiz?.getNumberOfQuestions() ?: 0)){
+                            // collapse the array of points into the total?? maybe you do this in summary page
+                            navController.navigate(GeoGuruScreen.Summary.name)
+                        } else {
+                            viewModel.transitionNextQuestion()
+                            navController.navigate(GeoGuruScreen.Questions.name)
+                        } },
                     onCancelButtonClicked = {
                         cancelQuizAndNavigateToStart(viewModel, navController)
                     },

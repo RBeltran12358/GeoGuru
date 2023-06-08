@@ -13,9 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.geoguru.R
+import com.example.geoguru.data.QuizUiState
 
 @Composable
 fun SelectOptionScreen(
+    quizUiState: QuizUiState,
     options: List<String>,
     onSelectionChanged: (String) -> Unit = {},
     onCancelButtonClicked: () -> Unit = {},
@@ -30,10 +32,12 @@ fun SelectOptionScreen(
     ) {
         Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))) {
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
-            Text(
-                text = stringResource(R.string.sample_question),
-                style = MaterialTheme.typography.headlineLarge
-            )
+            quizUiState.currQuiz?.quizQuestions?.get(quizUiState.currQuestionIndex)?.let {
+                Text(
+                    text = it.quizQuestion,
+                    style = MaterialTheme.typography.headlineLarge
+                )
+            }
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
             Divider(
                 thickness = dimensionResource(R.dimen.thickness_divider),

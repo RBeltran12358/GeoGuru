@@ -1,5 +1,6 @@
 package com.example.geoguru.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,8 +12,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.example.geoguru.R
 import com.example.geoguru.data.QuizUiState
 
@@ -32,12 +36,24 @@ fun PreviewScreen(
             verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {
             Text(
-                text = stringResource(R.string.preview_title_setup) + " " + quizUiState.quiz_id,
+                text = (quizUiState.currQuiz?.preview?.title ?: "Preview Title"),
                 style = MaterialTheme.typography.headlineLarge
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+            quizUiState.currQuiz?.preview?.image?.let { painterResource(it) }?.let {
+                Image(
+                    painter = it,
+                    contentDescription = quizUiState.currQuiz.getQuizTitle(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(194.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+
             Text(
-                text = stringResource(R.string.preview_quiz_description),
+                text = (quizUiState.currQuiz?.preview?.description ?: "Preview Description"),
                 style = MaterialTheme.typography.headlineSmall
             )
         }
