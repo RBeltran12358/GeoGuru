@@ -13,12 +13,6 @@ object DataSource {
         R.string.salinas,
     )
 
-    val quizOptions = listOf(
-        Pair(R.string.quiz_one, 1),
-        Pair(R.string.quiz_two, 2),
-        Pair(R.string.quiz_three, 3)
-    )
-
     val quizList = listOf(
         Quiz(
             quizId = 1,
