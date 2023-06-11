@@ -3,6 +3,7 @@ package com.example.geoguru.ui
 import androidx.lifecycle.ViewModel
 import com.example.geoguru.data.DataSource
 import com.example.geoguru.data.QuizUiState
+import com.example.geoguru.model.Quiz
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,6 +38,14 @@ class QuizViewModel : ViewModel() {
             val updatedScores = currState.scores
             val wrongIndices = currState.incorrectQuestionsIndices
 
+            val newQuiz = currState.currQuiz
+
+            if (newQuiz != null) {
+                newQuiz.quizQuestions.get(currState.currQuestionIndex).userAnswer = userResponse
+            }
+
+//            currState.currQuiz?.quizQuestions?.get(currState.currQuestionIndex)?.setUserAnswer(userResponse)
+
             if (currState.currQuiz?.quizQuestions?.get(currState.currQuestionIndex)?.validateAnswer(userResponse) == true){
                 updatedScores[currState.currQuestionIndex] = 1
                 wrongIndices.remove(currState.currQuestionIndex)
@@ -46,7 +55,8 @@ class QuizViewModel : ViewModel() {
             }
             currState.copy(
                 scores = updatedScores,
-                incorrectQuestionsIndices = wrongIndices
+                incorrectQuestionsIndices = wrongIndices,
+                currQuiz = newQuiz
             )
         }
     }
@@ -55,17 +65,4 @@ class QuizViewModel : ViewModel() {
     fun resetQuiz() {
         _uiState.value = QuizUiState()
     }
-
-
-//    private fun quizQuestionOptions(): List<String> {
-//        val dateOptions = mutableListOf<String>()
-//        val formatter = SimpleDateFormat("E MMM d", Locale.getDefault())
-//        val calendar = Calendar.getInstance()
-//        // add current date and the following 3 dates.
-//        repeat(4) {
-//            dateOptions.add(formatter.format(calendar.time))
-//            calendar.add(Calendar.DATE, 1)
-//        }
-//        return dateOptions
-//    }
 }

@@ -17,7 +17,7 @@ object DataSource {
         Quiz(
             quizId = 1,
             preview = QuizPreview(
-                title = "US States by Outline",
+                title = "US States (Outline)",
                 image = R.drawable.americanflag,
                 description = "See if you can identify US states by their shape!"
             ),
@@ -41,8 +41,9 @@ object DataSource {
                     quizQuestion = "Which state is this?",
                     image = R.drawable.coloradooutline,
                     correctAnswer = "Colorado",
-                    quizOptions = listOf("North Dakota", "South Dakota", "Colorado", "NULL")),
-            )
+                    quizOptions = listOf("North Dakota", "South Dakota", "Colorado", "NULL (Wyoming)")),
+            ),
+            difficultyRating = "Easy"
         ),
         Quiz(
             quizId = 2,
@@ -103,12 +104,13 @@ object DataSource {
                     image = null,
                     correctAnswer = "Zagreb",
                     quizOptions = listOf("Split", "Zagreb", "Budapest", "Rijeka")),
-            )
+            ),
+            difficultyRating = "Hard"
         ),
         Quiz(
             quizId = 3,
             preview = QuizPreview(
-                title = "African Countries by Outline",
+                title = "African Countries",
                 image = R.drawable.africaoutline,
                 description = "Test your knowledge of African country shapes by their outline!"
             ),
@@ -121,14 +123,15 @@ object DataSource {
                 QuizQuestion(
                     quizQuestion = "Which country is this?",
                     image = R.drawable.ethiopiaoutline,
-                    correctAnswer = "Alabama",
+                    correctAnswer = "Ethiopia",
                     quizOptions = listOf("Eritrea", "Zimbabwe", "Botswana", "Ethiopia")),
                 QuizQuestion(
                     quizQuestion = "Which country is this?",
                     image = R.drawable.malioutline,
                     correctAnswer = "Mali",
                     quizOptions = listOf("Mauritania", "Angola", "Mali", "Libya")),
-            )
+            ),
+            difficultyRating = "Hard"
         ),
 //        Quiz(
 //            quizId = 4,
