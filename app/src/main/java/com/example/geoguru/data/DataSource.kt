@@ -130,63 +130,91 @@ object DataSource {
                     image = R.drawable.malioutline,
                     correctAnswer = "Mali",
                     quizOptions = listOf("Mauritania", "Angola", "Mali", "Libya")),
+                QuizQuestion(
+                    quizQuestion = "Which country is this?",
+                    image = R.drawable.eritreaoutline,
+                    correctAnswer = "Eritrea",
+                    quizOptions = listOf("Eritrea", "Djibouti", "Somalia", "Senegal")),
+                QuizQuestion(
+                    quizQuestion = "Which country is this?",
+                    image = R.drawable.burkinafasooutline,
+                    correctAnswer = "Burkina Faso",
+                    quizOptions = listOf("Guinea", "Central African Republic", "Burkina Faso", "Botswana")),
             ),
             difficultyRating = "Hard"
         ),
-//        Quiz(
-//            quizId = 4,
-//            preview = QuizPreview(
-//                title = "Quiz 4",
-//                image = R.drawable.americanflag,
-//                description = "Quiz 4 Description"
-//            ),
-//            quizQuestions = listOf(
-//                QuizQuestion(
-//                    quizQuestion = "What is cow",
-//                    image = "",
-//                    correctAnswer = "cow"),
-//                QuizQuestion(
-//                    quizQuestion = "What is 3",
-//                    image = "",
-//                    correctAnswer = "3"),
-//            )
-//        ),
-//        Quiz(
-//            quizId = 5,
-//            preview = QuizPreview(
-//                title = "Quiz 5",
-//                image = R.drawable.americanflag,
-//                description = "Quiz 5 Description"
-//            ),
-//            quizQuestions = listOf(
-//                QuizQuestion(
-//                    quizQuestion = "This is quiz5, say yay",
-//                    image = "",
-//                    correctAnswer = "yay"),
-//                QuizQuestion(
-//                    quizQuestion = "What is 098",
-//                    image = "",
-//                    correctAnswer = "098"),
-//            )
-//        ),
-//        Quiz(
-//            quizId = 6,
-//            preview = QuizPreview(
-//                title = "Quiz 6",
-//                image = R.drawable.americanflag,
-//                description = "Quiz 6 Description"
-//            ),
-//            quizQuestions = listOf(
-//                QuizQuestion(
-//                    quizQuestion = "Quiz 6 works, say yee",
-//                    image = "",
-//                    correctAnswer = "yee"),
-//                QuizQuestion(
-//                    quizQuestion = "What is moo",
-//                    image = "",
-//                    correctAnswer = "moo"),
-//            )
-//        ),
+        Quiz(
+            quizId = 4,
+            preview = QuizPreview(
+                title = "Asian Currencies",
+                image = R.drawable.asiaoutline,
+                description = "See how well you know the primary currency of different asian countries!"
+            ),
+            quizQuestions = listOf(
+                QuizQuestion(
+                    quizQuestion = "Which is the primary currency of Japan?",
+                    image = null,
+                    correctAnswer = "JPY",
+                    quizOptions = listOf("KRW", "JPY", "BDT", "INR")),
+                QuizQuestion(
+                    quizQuestion = "Which is the primary currency of India?",
+                    image = null,
+                    correctAnswer = "INR",
+                    quizOptions = listOf("BDT", "INR", "KRW", "IDR")),
+                QuizQuestion(
+                    quizQuestion = "Which is the primary currency of Philippines?",
+                    image = null,
+                    correctAnswer = "PHP",
+                    quizOptions = listOf("JPY", "PHP", "KRW", "SGD")),
+                QuizQuestion(
+                    quizQuestion = "Which is the primary currency of Cambodia?",
+                    image = null,
+                    correctAnswer = "KHR",
+                    quizOptions = listOf("KHR", "KRW", "JPY", "BDT")),
+                QuizQuestion(
+                    quizQuestion = "Which is the primary currency of Korea?",
+                    image = null,
+                    correctAnswer = "KRW",
+                    quizOptions = listOf("KPW", "JPY", "BDT", "KRW")),
+            ),
+            difficultyRating = "Hard"
+        ),
+        Quiz(
+            quizId = 5,
+            preview = QuizPreview(
+                title = "South American Capitals",
+                image = R.drawable.southamericaoutline,
+                description = "See how well you know the capitals of different South American countries!"
+            ),
+            quizQuestions = listOf(
+                QuizQuestion(
+                    quizQuestion = "What is the capital of Chile?",
+                    image = null,
+                    correctAnswer = "Santiago",
+                    quizOptions = listOf("Buenos Aires", "Santiago", "Lima", "Temuco")),
+                QuizQuestion(
+                    quizQuestion = "What is the capital of Bolivia?",
+                    image = null,
+                    correctAnswer = "La Paz",
+                    quizOptions = listOf("La Paz", "Bogota", "Cochabamba", "Santa Cruz")),
+                QuizQuestion(
+                    quizQuestion = "What is the capital of Suriname?",
+                    image = null,
+                    correctAnswer = "Paramaribo",
+                    quizOptions = listOf("Cayenne", "Moengo", "Georgetown", "Paramaribo")),
+                QuizQuestion(
+                    quizQuestion = "What is the capital of Venezuela?",
+                    image = null,
+                    correctAnswer = "Caracas",
+                    quizOptions = listOf("Grenade", "Carupano", "Maracaibo", "Caracas")),
+                QuizQuestion(
+                    quizQuestion = "What is the capital of Brazil?",
+                    image = null,
+                    correctAnswer = "Brasilia",
+                    quizOptions = listOf("Sao Paulo", "Buenos Aires", "Brasilia", "Montevideo")),
+            ),
+            difficultyRating = "Hard"
+        ),
     )
 
     val quizMap = quizList.associateBy { it.quizId }
